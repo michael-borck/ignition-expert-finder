@@ -1,0 +1,11 @@
+# Applied automatically when this file is present, which is only when you have
+# a checkout. It restores the build stanza so `docker compose up -d --build`
+# works from a clone.
+#
+# The base docker-compose.yml deliberately has no `build:` key, because it is
+# also meant to work on a server holding nothing but it, the Caddyfile and a
+# .env - and there, a failed pull falling back to building from a context that
+# does not exist fails far more confusingly than the pull failing.
+services:
+  app:
+    build: .

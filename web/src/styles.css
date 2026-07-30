@@ -1,0 +1,909 @@
+/* Palette carried over from the concept mocks the Ignition team reviewed, so
+   the built app reads as the same tool they already said yes to. */
+
+:root {
+  --bg: #faf8f4;
+  --surface: #fffefb;
+  --ink: #221c15;
+  --muted: #6e6558;
+  --line: #e5decf;
+  --accent: #96650a;
+  --accent-soft: #f5e8cb;
+  --positive: #2f6b4f;
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17130e;
+    --surface: #1f1a13;
+    --ink: #f1eadf;
+    --muted: #a99c88;
+    --line: #3a3122;
+    --accent: #e9ac33;
+    --accent-soft: #3a2e12;
+    --positive: #7dc4a0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 38px);
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+}
+
+.sub {
+  color: var(--muted);
+  margin: 0 0 32px;
+  max-width: 46rem;
+}
+
+/* --- pathway chooser --- */
+
+/* Fixed 2x2 rather than auto-fit. Auto-fit packed three across and orphaned
+   the fourth on its own row, which read as three options plus an afterthought
+   instead of four equal front doors. */
+.pathways {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 44rem) {
+  .pathways {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pathway {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.pathway:hover,
+.pathway:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.pathway .cost {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.pathway .blurb {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.pathway[data-suggested="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* --- expert cards --- */
+
+.experts {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  margin-top: 20px;
+}
+
+.expert {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.expert .name {
+  font-weight: 700;
+}
+
+.expert .role {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tag[data-matched="true"] {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+/* --- controls --- */
+
+.search {
+  width: 100%;
+  padding: 12px 14px;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.search:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.filter {
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.filter[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+}
+
+.back {
+  font: inherit;
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.count {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.empty {
+  padding: 32px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+a {
+  color: var(--accent);
+}
+
+/* --- self-assessment --- */
+
+.scale-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.scale-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.scale-row:last-child {
+  border-bottom: none;
+}
+
+.scale {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.dot:hover {
+  border-color: var(--accent);
+}
+
+.dot[aria-checked="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+  font-weight: 700;
+}
+
+.submit-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.primary-action {
+  font: inherit;
+  font-weight: 600;
+  padding: 12px 22px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--surface);
+  cursor: pointer;
+}
+
+.primary-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.secondary-action {
+  font: inherit;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.secondary-action:hover {
+  border-color: var(--accent);
+}
+
+/* --- recommendation --- */
+
+.rec {
+  margin: 32px 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.rec-head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.rank {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.rec-head p {
+  margin: 0;
+}
+
+.evidence {
+  margin: 0 0 14px;
+  padding: 10px 16px;
+  border-left: 3px solid var(--accent-soft);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.expert-body {
+  min-width: 0;
+}
+
+.expert-primary {
+  border-color: var(--accent);
+}
+
+.why {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.bio {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.bio summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.bio p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.alt-label {
+  margin: 16px 0 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.alts {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+.chip-large {
+  font-size: 14px;
+  padding: 10px 16px;
+}
+
+.filter:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* --- chat --- */
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 55vh;
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.bubble {
+  max-width: 46ch;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  white-space: pre-wrap;
+}
+
+.bubble-assistant {
+  background: var(--accent-soft);
+  align-self: flex-start;
+}
+
+.bubble-user {
+  background: var(--accent);
+  color: var(--surface);
+  align-self: flex-end;
+}
+
+.typing {
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.composer {
+  margin-top: 14px;
+}
+
+.composer-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.file-button {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.doc-note,
+.error-note,
+.disclaimer {
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+
+.doc-note {
+  color: var(--muted);
+}
+
+.error-note {
+  color: #a4402c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .error-note {
+    color: #e79274;
+  }
+}
+
+.disclaimer {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* --- organiser dashboard --- */
+
+.panel {
+  margin: 28px 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.panel h2 {
+  margin-bottom: 2px;
+}
+
+.panel .role {
+  margin: 0 0 14px;
+}
+
+.callout {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  margin: 20px 0;
+  font-size: 14.5px;
+}
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.data th {
+  text-align: left;
+  font-weight: 600;
+  padding: 7px 10px 7px 0;
+  vertical-align: baseline;
+}
+
+table.data thead th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+table.data td {
+  padding: 7px 10px 7px 0;
+  vertical-align: middle;
+}
+
+table.data tbody tr {
+  border-bottom: 1px solid var(--line);
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bar-cell {
+  width: 55%;
+}
+
+.bar-track {
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+table.data .role {
+  display: inline;
+  margin: 0;
+  font-size: 12px;
+}
+
+.diff ul {
+  margin: 8px 0;
+  padding-left: 1.2em;
+}
+
+.warn {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+}
+
+.stood-down th {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.doc-kinds {
+  margin: 0 0 14px;
+  padding-left: 1.2em;
+}
+
+.doc-kinds li {
+  margin-bottom: 6px;
+}
+
+/* --- clinician editor --- */
+
+.editor {
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.field-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.field {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.field > span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.tag-field .tags {
+  margin-bottom: 8px;
+}
+
+.tag-field .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 3px 6px 3px 10px;
+}
+
+.tag-field .tag button {
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.tag[data-unknown="true"] {
+  background: #a4402c;
+  color: #fff;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.danger {
+  color: #a4402c;
+  border-color: #a4402c;
+}
+
+.warn-inline {
+  font-size: 11px;
+  color: #a4402c;
+  margin-left: 8px;
+}
+
+.bench-table th {
+  font-weight: 400;
+}
+
+.questions {
+  margin: 14px 0 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.questions h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.questions ol {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.questions li {
+  margin-bottom: 6px;
+  font-size: 14.5px;
+}
+
+.feedback {
+  margin-top: 28px;
+  padding: 14px 18px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+.feedback-ask {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14.5px;
+}
+
+.comments {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+}
+
+.comments li {
+  margin-bottom: 8px;
+  font-size: 14.5px;
+}
+
+/* --- print ------------------------------------------------------------- */
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  /* The founder is taking this to a paper booking sheet. Everything that is
+     not a name, a reason or a way to make contact is noise on paper. */
+  :root {
+    --bg: #fff;
+    --surface: #fff;
+    --ink: #000;
+    --muted: #444;
+    --line: #bbb;
+    --accent: #6b4a08;
+    --accent-soft: #f0ece2;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .no-print,
+  .back,
+  .submit-bar,
+  .eyebrow,
+  .sub {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .print-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1.5pt solid var(--accent);
+    padding-bottom: 6pt;
+    margin-bottom: 14pt;
+  }
+
+  h1 {
+    font-size: 15pt;
+    margin-bottom: 10pt;
+  }
+
+  h2 {
+    font-size: 12pt;
+  }
+
+  /* Keep an area and its experts on one page - a primary orphaned from its
+     heading is worse than a page break somewhere less tidy. */
+  .rec {
+    break-inside: avoid;
+    margin: 0 0 12pt;
+    padding-top: 10pt;
+  }
+
+  .expert {
+    break-inside: avoid;
+    padding: 8pt;
+  }
+
+  .alts {
+    grid-template-columns: 1fr 1fr;
+    gap: 8pt;
+  }
+
+  .avatar {
+    width: 40pt;
+    height: 40pt;
+  }
+
+  /* Bios are collapsed on screen and would print half-open and ragged. The
+     contact details are what matter on paper. */
+  .bio {
+    display: none;
+  }
+
+  /* The questions are the main reason to print this - they turn a name into a
+     prepared twenty minutes. Keep each set with its expert. */
+  .questions {
+    break-inside: avoid;
+    background: none;
+    border-left: 2pt solid var(--accent);
+    padding: 4pt 10pt;
+    margin-top: 8pt;
+  }
+
+  .questions li {
+    font-size: 10pt;
+    margin-bottom: 3pt;
+  }
+
+  .contact a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .booking {
+    break-before: page;
+  }
+
+  .booking table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8pt;
+  }
+
+  .booking th {
+    text-align: left;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1pt solid var(--line);
+    padding: 4pt;
+  }
+
+  .booking td {
+    border-bottom: 1pt solid var(--line);
+    height: 26pt;
+    padding: 4pt;
+  }
+}

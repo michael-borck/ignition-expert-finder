@@ -1,0 +1,46 @@
+services:
+  app:
+    # Built and published by GitHub Actions on every push to main, carrying no
+    # personal data - the bench is uploaded at /admin after deployment.
+    #
+    # Deliberately no `build:` stanza. This file is meant to work on a server
+    # that has only it, the Caddyfile and a .env - no checkout. With a build
+    # stanza, a failed pull falls back to building from a context that is not
+    # there, which fails in a far more confusing way than "pull failed".
+    # To build locally: docker build -t expert-finder .
+    image: ghcr.io/michael-borck/curtin-ignition-expert-finder:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Overrides .env: inside the container the log always goes to the volume.
+      DATABASE_PATH: /data/expert-finder.sqlite
+      # An uploaded bench must land on the volume; the copy in the image is
+      # read-only across redeploys.
+      BENCH_PATH: /data/clinicians.json
+      # Uploaded headshots, same reasoning as BENCH_PATH.
+      HEADSHOTS_PATH: /data/headshots
+    volumes:
+      - event-log:/data
+    expose:
+      - "3210"
+
+  # Terminates TLS and gets certificates automatically. Set DOMAIN in .env.
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on: [app]
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  # Named, not bind-mounted: the founders' event log is the one piece of state
+  # here and it must survive `docker compose down`.
+  event-log:
+  caddy-data:
+  caddy-config:

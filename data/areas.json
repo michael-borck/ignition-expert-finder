@@ -1,0 +1,215 @@
+{
+  "_comment": [
+    "The eight founder-facing need areas, carried over from the concept mocks",
+    "that Ignition reviewed. 'tags' lists the expertise-sheet values that map to",
+    "each area. scripts/build_clinicians.py fails the build if a clinician tag",
+    "matches no area and is not listed in sector_tags, so a re-uploaded bench",
+    "cannot silently degrade the matching.",
+    "'prompt' is the question shown to founders; 'strength' is the affirming",
+    "phrasing used when a founder scores well in this area."
+  ],
+  "areas": [
+    {
+      "id": "validate",
+      "label": "Idea & validation",
+      "prompt": "Is this a real opportunity, and who is it for?",
+      "strength": "You have a clear read on the opportunity",
+      "tags": [
+        "Startups",
+        "Entrepreneurship",
+        "Innovation",
+        "Commercialisation",
+        "Social Enterprise",
+        "Social Impact",
+        "Sustainability"
+      ]
+    },
+    {
+      "id": "strategy",
+      "label": "Business model & strategy",
+      "prompt": "How will this actually make money?",
+      "strength": "Your business model is well thought through",
+      "tags": [
+        "Strategy",
+        "Business Strategy",
+        "Business Structuring",
+        "Strategic Planning",
+        "Governance",
+        "Commercial Strategy",
+        "Business Transformation",
+        "Turnaround Management",
+        "Consulting",
+        "Business Scale-Up"
+      ]
+    },
+    {
+      "id": "product",
+      "label": "Product & technology",
+      "prompt": "Can we build it — and should we build it this way?",
+      "strength": "You have a solid handle on what you're building",
+      "tags": [
+        "Tech",
+        "Software Development",
+        "Software",
+        "Product Design",
+        "Product Design and Manufacturing",
+        "Artificial Intelligence",
+        "Advanced Manufacturing",
+        "Web Design",
+        "Geographic Information Systems",
+        "Spatial Data",
+        "Technical Leadership",
+        "Technology Transformation",
+        "Applied Ethics"
+      ]
+    },
+    {
+      "id": "market",
+      "label": "Marketing, brand & sales",
+      "prompt": "How do we reach customers and get them to buy?",
+      "strength": "You know how to reach your customers",
+      "tags": [
+        "Marketing",
+        "Sales",
+        "Branding",
+        "Business Growth",
+        "Business Development",
+        "Digital Consulting",
+        "International Market Development",
+        "Growth and Sustainability",
+        "Personal Brand"
+      ]
+    },
+    {
+      "id": "ip",
+      "label": "IP & legal",
+      "prompt": "How do we protect the idea and structure the business?",
+      "strength": "Your IP and legal position is in good shape",
+      "tags": [
+        "Intellectual Property",
+        "Patents",
+        "Trademarks",
+        "Patents & Trademarks",
+        "Trademark Protection",
+        "Brand Protection",
+        "Corporate Law",
+        "Contracts",
+        "Asset Management"
+      ]
+    },
+    {
+      "id": "funding",
+      "label": "Funding & finance",
+      "prompt": "Where does the money come from — grants, R&D, investors?",
+      "strength": "You have a credible funding path",
+      "tags": [
+        "Fundraising",
+        "R&D Financing",
+        "Strategic Funding",
+        "Grant Funding",
+        "R&D Tax",
+        "Investor Relations"
+      ]
+    },
+    {
+      "id": "pitch",
+      "label": "Pitch & story",
+      "prompt": "Can I explain this in a way that lands?",
+      "strength": "You can tell your story well",
+      "tags": [
+        "Pitching",
+        "Public Speaking",
+        "Personal Brand",
+        "Investor Relations",
+        "Branding"
+      ]
+    },
+    {
+      "id": "founder",
+      "label": "You & your team",
+      "prompt": "Am I set up to lead this — and who do I need around me?",
+      "strength": "You and your team are well set up",
+      "tags": [
+        "Leadership",
+        "Leadership Development",
+        "Career Coaching",
+        "Coaching Psychologist",
+        "Change Management",
+        "Purpose-Driven Enterprise",
+        "Stakeholder Engagement",
+        "Strategic Partnerships",
+        "Industry Engagement"
+      ]
+    }
+  ],
+  "_sector_comment": [
+    "Domain tags that describe the industry a clinician knows rather than a",
+    "capability a founder needs. They never drive area matching, but they are",
+    "shown on the expert card and are useful for a sector-aware tiebreak."
+  ],
+  "sector_tags": [
+    "Mining and Energy"
+  ],
+  "_alias_comment": [
+    "Typos and spelling variants found in the 2026 expertise spreadsheet,",
+    "mapped to the canonical tag. Fix these in the source sheet when you can;",
+    "until then this table keeps the matching correct. A value of null splits",
+    "a compound field that used commas inside a slash-separated list."
+  ],
+  "aliases": {
+    "Artificial Intellifgence": "Artificial Intelligence",
+    "Inovation": "Innovation",
+    "Patents and Trademarks": "Patents & Trademarks",
+    "Trade Marks": "Trademarks"
+  },
+  "_stages_comment": [
+    "Where the founder says their venture is up to, used by the guided pathway.",
+    "'likelyGaps' are the areas that most commonly need work at that stage. They",
+    "never override what the founder actually tells us - they only decide the",
+    "running order when someone names fewer than three concerns, so the third",
+    "recommendation is a sensible guess rather than an alphabetical accident.",
+    "Tune these freely; they are a heuristic, not a diagnosis."
+  ],
+  "stages": [
+    {
+      "id": "idea",
+      "label": "It's an idea",
+      "description": "Nothing tested yet - I want to know if it is worth pursuing.",
+      "likelyGaps": [
+        "validate",
+        "strategy",
+        "market"
+      ]
+    },
+    {
+      "id": "validating",
+      "label": "I'm testing it",
+      "description": "Talking to potential customers, running early experiments.",
+      "likelyGaps": [
+        "market",
+        "strategy",
+        "funding"
+      ]
+    },
+    {
+      "id": "building",
+      "label": "I'm building it",
+      "description": "Product in progress, maybe first sales.",
+      "likelyGaps": [
+        "market",
+        "funding",
+        "ip"
+      ]
+    },
+    {
+      "id": "existing",
+      "label": "Existing business, new direction",
+      "description": "Diversifying products or markets, or spinning out a venture.",
+      "likelyGaps": [
+        "strategy",
+        "funding",
+        "founder"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+# Build context hygiene. Also load-bearing on macOS: this project lives on an
+# exFAT volume where Finder writes AppleDouble "._" sidecar files, and the
+# Docker builder fails outright trying to read their extended attributes.
+._*
+.DS_Store
+
+.git
+.gitignore
+node_modules
+dist
+
+# Source documents are 25MB and the image reads data/ instead.
+*.xlsx
+*.docx
+
+# Local secrets and databases never belong in an image. Patterns need the
+# leading **/ to reach data/, where the development database actually lives.
+.env
+**/*.sqlite
+**/*.sqlite-*
+
+# Not needed at runtime.
+docs/
+scripts/
+*.test.ts
+README.md

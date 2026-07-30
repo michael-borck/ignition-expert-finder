@@ -1,0 +1,22 @@
+# The real bench is never committed - it holds contact details, biographies and
+# photographs of real people, and this repository is public. Organisers upload
+# the source documents at /admin instead. data/clinicians.sample.json is
+# invented and exists so the app runs for anyone who clones it.
+data/clinicians.json
+data/headshots/
+
+# Source documents are uploaded at /admin, never committed.
+*.xlsx
+*.docx
+# macOS resource forks
+._*
+.DS_Store
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+# SQLite writes -wal and -shm alongside the database in WAL mode; the bare
+# *.sqlite pattern misses them and two were committed before this was noticed.
+*.sqlite
+*.sqlite-*

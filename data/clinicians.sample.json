@@ -1,0 +1,228 @@
+[
+  {
+    "id": "ada-keen",
+    "active": true,
+    "name": "Ada Keen",
+    "company": "Vane & Roe",
+    "title": "Patent Attorney",
+    "tags": [
+      "Intellectual Property",
+      "Patents & Trademarks",
+      "Brand Protection"
+    ],
+    "linkedin": "https://www.linkedin.com/in/ada-keen/",
+    "email": "ada.keen@example.com",
+    "bio": "Ada is an invented clinician used to demonstrate the tool. They work on intellectual property, patents & trademarks and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "marcus-oyelaran",
+    "active": true,
+    "name": "Marcus Oyelaran",
+    "company": "Northbridge Legal",
+    "title": "Partner",
+    "tags": [
+      "Corporate Law",
+      "Contracts",
+      "Business Structuring"
+    ],
+    "linkedin": "https://www.linkedin.com/in/marcus-oyelaran/",
+    "email": "marcus.oyelaran@example.com",
+    "bio": "Marcus is an invented clinician used to demonstrate the tool. They work on corporate law, contracts and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "priya-raman",
+    "active": true,
+    "name": "Priya Raman",
+    "company": "Kestrel Digital",
+    "title": "Growth Lead",
+    "tags": [
+      "Marketing",
+      "Sales",
+      "Business Growth"
+    ],
+    "linkedin": "https://www.linkedin.com/in/priya-raman/",
+    "email": "priya.raman@example.com",
+    "bio": "Priya is an invented clinician used to demonstrate the tool. They work on marketing, sales and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "sofia-okonkwo",
+    "active": true,
+    "name": "Sofia Okonkwo",
+    "company": "Harbourline",
+    "title": "Client Strategy",
+    "tags": [
+      "Business Development",
+      "Consulting",
+      "Strategy"
+    ],
+    "linkedin": "https://www.linkedin.com/in/sofia-okonkwo/",
+    "email": "sofia.okonkwo@example.com",
+    "bio": "Sofia is an invented clinician used to demonstrate the tool. They work on business development, consulting and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "tomas-iversen",
+    "active": true,
+    "name": "Tomas Iversen",
+    "company": "Fold Manufacturing",
+    "title": "Director",
+    "tags": [
+      "Advanced Manufacturing",
+      "Product Design",
+      "Innovation"
+    ],
+    "linkedin": "https://www.linkedin.com/in/tomas-iversen/",
+    "email": "tomas.iversen@example.com",
+    "bio": "Tomas is an invented clinician used to demonstrate the tool. They work on advanced manufacturing, product design and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "renata-del-rossi",
+    "active": true,
+    "name": "Renata Del Rossi",
+    "company": "Emersyn Group",
+    "title": "Founder",
+    "tags": [
+      "Branding",
+      "Personal Brand",
+      "Pitching",
+      "Public Speaking"
+    ],
+    "linkedin": "https://www.linkedin.com/in/renata-del-rossi/",
+    "email": "renata.del.rossi@example.com",
+    "bio": "Renata is an invented clinician used to demonstrate the tool. They work on branding, personal brand and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "harriet-vane",
+    "active": true,
+    "name": "Harriet Vane",
+    "company": "Rivet Capital",
+    "title": "Investment Director",
+    "tags": [
+      "Fundraising",
+      "Investor Relations",
+      "Strategic Funding"
+    ],
+    "linkedin": "https://www.linkedin.com/in/harriet-vane/",
+    "email": "harriet.vane@example.com",
+    "bio": "Harriet is an invented clinician used to demonstrate the tool. They work on fundraising, investor relations and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "nicholas-ashby",
+    "active": true,
+    "name": "Nicholas Ashby",
+    "company": "Grantwell",
+    "title": "Principal",
+    "tags": [
+      "Grant Funding",
+      "R&D Financing",
+      "R&D Tax"
+    ],
+    "linkedin": "https://www.linkedin.com/in/nicholas-ashby/",
+    "email": "nicholas.ashby@example.com",
+    "bio": "Nicholas is an invented clinician used to demonstrate the tool. They work on grant funding, r&d financing and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "marion-fossey",
+    "active": true,
+    "name": "Marion Fossey",
+    "company": "Fossey Advisory",
+    "title": "Leadership Coach",
+    "tags": [
+      "Leadership",
+      "Leadership Development",
+      "Career Coaching"
+    ],
+    "linkedin": "https://www.linkedin.com/in/marion-fossey/",
+    "email": "marion.fossey@example.com",
+    "bio": "Marion is an invented clinician used to demonstrate the tool. They work on leadership, leadership development and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "anna-webb",
+    "active": true,
+    "name": "Anna Webb",
+    "company": "Coasthouse",
+    "title": "Organisational Psychologist",
+    "tags": [
+      "Coaching Psychologist",
+      "Change Management",
+      "Stakeholder Engagement"
+    ],
+    "linkedin": "https://www.linkedin.com/in/anna-webb/",
+    "email": "anna.webb@example.com",
+    "bio": "Anna is an invented clinician used to demonstrate the tool. They work on coaching psychologist, change management and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "dev-bhattacharya",
+    "active": true,
+    "name": "Dev Bhattacharya",
+    "company": "Ninefold",
+    "title": "CTO",
+    "tags": [
+      "Tech",
+      "Software Development",
+      "Technical Leadership"
+    ],
+    "linkedin": "https://www.linkedin.com/in/dev-bhattacharya/",
+    "email": "dev.bhattacharya@example.com",
+    "bio": "Dev is an invented clinician used to demonstrate the tool. They work on tech, software development and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "yuki-tanaka",
+    "active": true,
+    "name": "Yuki Tanaka",
+    "company": "Provender",
+    "title": "Co-Founder",
+    "tags": [
+      "Startups",
+      "Entrepreneurship",
+      "Commercialisation",
+      "Social Enterprise"
+    ],
+    "linkedin": "https://www.linkedin.com/in/yuki-tanaka/",
+    "email": "yuki.tanaka@example.com",
+    "bio": "Yuki is an invented clinician used to demonstrate the tool. They work on startups, entrepreneurship and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "callum-reid",
+    "active": true,
+    "name": "Callum Reid",
+    "company": "Reid & Partners",
+    "title": "Advisor",
+    "tags": [
+      "Business Strategy",
+      "Strategic Planning",
+      "Governance"
+    ],
+    "linkedin": "https://www.linkedin.com/in/callum-reid/",
+    "email": "callum.reid@example.com",
+    "bio": "Callum is an invented clinician used to demonstrate the tool. They work on business strategy, strategic planning and exist so the app runs without any real personal data.",
+    "headshot": null
+  },
+  {
+    "id": "imogen-blackwood",
+    "active": true,
+    "name": "Imogen Blackwood",
+    "company": "Trailhead",
+    "title": "Head of Ventures",
+    "tags": [
+      "Innovation",
+      "Startups",
+      "Sustainability"
+    ],
+    "linkedin": "https://www.linkedin.com/in/imogen-blackwood/",
+    "email": "imogen.blackwood@example.com",
+    "bio": "Imogen is an invented clinician used to demonstrate the tool. They work on innovation, startups and exist so the app runs without any real personal data.",
+    "headshot": null
+  }
+]

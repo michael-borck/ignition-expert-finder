@@ -1,0 +1,14 @@
+# Caddy fetches and renews the TLS certificate itself; nothing to configure
+# beyond pointing DOMAIN at this host.
+{$DOMAIN} {
+	encode zstd gzip
+
+	# Uploaded documents are read, not stored, but they still have to arrive.
+	# The ceiling is set by the contributors directory an organiser uploads
+	# (25MB today), not by founder pitch decks, which are capped at 20MB.
+	request_body {
+		max_size 64MB
+	}
+
+	reverse_proxy app:3210
+}
